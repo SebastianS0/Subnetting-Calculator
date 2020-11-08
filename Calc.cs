@@ -165,28 +165,28 @@ namespace SubnettingCalc
         private void TypeSubnet()
         {
             if (txt_ipin.Text == "") return;
-            byte cidr = Convert.ToByte(ipSplt[0]);
-            if (cidr <= 127)
+            byte firstOctet = Convert.ToByte(ipSplt[0]);
+            if (firstOctet <= 127)
             {
                 //A
                 Lbl_NetClass.Text = "A";
             }
-            else if (cidr <= 191)
+            else if (firstOctet <= 191)
             {
                 //B
                 Lbl_NetClass.Text = "B";
             }
-            else if (cidr <= 223)
+            else if (firstOctet <= 223)
             {
                 //C
                 Lbl_NetClass.Text = "C";
             }
-            else if (cidr <= 231)
+            else if (firstOctet <= 231)
             {
                 //D
                 Lbl_NetClass.Text = "D";
             }
-            else if (cidr >= 232)
+            else if (firstOctet >= 232)
             {
                 //E
                 Lbl_NetClass.Text = "E";
