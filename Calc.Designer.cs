@@ -43,10 +43,12 @@
             this.rB_CidrN = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.lbl_NetClassHead = new System.Windows.Forms.Label();
-            this.lbl_NetClass = new System.Windows.Forms.Label();
+            this.Lbl_NetClass = new System.Windows.Forms.Label();
             this.lbl_subdec = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.Lbl_Netze = new System.Windows.Forms.Label();
+            this.Lbl_hosts = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txt_ipin
@@ -156,6 +158,7 @@
             this.rB_CidrY.TabIndex = 11;
             this.rB_CidrY.Text = "Ja";
             this.rB_CidrY.UseVisualStyleBackColor = true;
+            this.rB_CidrY.CheckedChanged += new System.EventHandler(this.rB_CidrY_CheckedChanged);
             // 
             // rB_CidrN
             // 
@@ -190,15 +193,15 @@
             this.lbl_NetClassHead.TabIndex = 14;
             this.lbl_NetClassHead.Text = "Network Class:";
             // 
-            // lbl_NetClass
+            // Lbl_NetClass
             // 
-            this.lbl_NetClass.AutoSize = true;
-            this.lbl_NetClass.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.lbl_NetClass.Location = new System.Drawing.Point(29, 378);
-            this.lbl_NetClass.Name = "lbl_NetClass";
-            this.lbl_NetClass.Size = new System.Drawing.Size(23, 24);
-            this.lbl_NetClass.TabIndex = 15;
-            this.lbl_NetClass.Text = "A";
+            this.Lbl_NetClass.AutoSize = true;
+            this.Lbl_NetClass.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.Lbl_NetClass.Location = new System.Drawing.Point(29, 378);
+            this.Lbl_NetClass.Name = "Lbl_NetClass";
+            this.Lbl_NetClass.Size = new System.Drawing.Size(23, 24);
+            this.Lbl_NetClass.TabIndex = 15;
+            this.Lbl_NetClass.Text = "A";
             // 
             // lbl_subdec
             // 
@@ -232,15 +235,37 @@
             this.label3.TabIndex = 19;
             this.label3.Text = "Hosts pro Netz";
             // 
+            // Lbl_Netze
+            // 
+            this.Lbl_Netze.AutoSize = true;
+            this.Lbl_Netze.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.Lbl_Netze.Location = new System.Drawing.Point(302, 294);
+            this.Lbl_Netze.Name = "Lbl_Netze";
+            this.Lbl_Netze.Size = new System.Drawing.Size(20, 24);
+            this.Lbl_Netze.TabIndex = 20;
+            this.Lbl_Netze.Text = "0";
+            // 
+            // Lbl_hosts
+            // 
+            this.Lbl_hosts.AutoSize = true;
+            this.Lbl_hosts.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.Lbl_hosts.Location = new System.Drawing.Point(302, 378);
+            this.Lbl_hosts.Name = "Lbl_hosts";
+            this.Lbl_hosts.Size = new System.Drawing.Size(20, 24);
+            this.Lbl_hosts.TabIndex = 21;
+            this.Lbl_hosts.Text = "0";
+            // 
             // Frm_Calc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 421);
+            this.Controls.Add(this.Lbl_hosts);
+            this.Controls.Add(this.Lbl_Netze);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lbl_subdec);
-            this.Controls.Add(this.lbl_NetClass);
+            this.Controls.Add(this.Lbl_NetClass);
             this.Controls.Add(this.lbl_NetClassHead);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.rB_CidrN);
@@ -283,10 +308,12 @@
         private System.Windows.Forms.RadioButton rB_CidrN;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lbl_NetClassHead;
-        private System.Windows.Forms.Label lbl_NetClass;
+        private System.Windows.Forms.Label Lbl_NetClass;
         private System.Windows.Forms.Label lbl_subdec;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label Lbl_Netze;
+        private System.Windows.Forms.Label Lbl_hosts;
     }
 }
 

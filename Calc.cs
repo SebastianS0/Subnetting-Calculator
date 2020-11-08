@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,7 +16,8 @@ namespace SubnettingCalc
     public partial class Frm_Calc : Form
     {
         string[] subBin = new string[4];
-        
+        string[] ipSplt = new string[4];
+
         public Frm_Calc()
         {
             InitializeComponent();
@@ -29,7 +31,7 @@ namespace SubnettingCalc
             string[] result;
             byte i = 0;
             string subdec = "";
-
+            NumHostsNets();
 
             Array.Clear(subBin, 0, subBin.Length);
             if (rB_CidrY.Checked)
@@ -99,12 +101,13 @@ namespace SubnettingCalc
         {
             string ipAdr = txt_ipin.Text;
             char[] spltby = new char[] { '.' };
-            string[] result;
             string[] ipBin = new string[4];
             byte i = 0;
 
-            result = ipAdr.Split(spltby);
-            foreach (string x in result)
+            Array.Clear(ipSplt, 0, ipSplt.Length);
+            ipSplt = ipAdr.Split(spltby);
+            TypeSubnet();
+            foreach (string x in ipSplt)
             {
                 if (x == "" || Convert.ToInt32(x) > 255) return;
                 ipBin[i] = ToBinary(x);
@@ -147,7 +150,48 @@ namespace SubnettingCalc
 
             lbl_SubID.Text = string.Join(".", subID);
         }
-  
+        private void NumHostsNets()
+        {
+            if (txt_subin.Text == "") return;
+            if (rB_CidrY.Checked){
+                byte y = (byte)(32 - Convert.ToByte(txt_subin.Text));
+                byte x = Convert.ToByte(txt_subin.Text);
+                UInt32 hosts = (uint)Math.Pow(2, y) - 2;
+                UInt32 netze = (uint)Math.Pow(2, x);
+                Lbl_hosts.Text = hosts + "";
+                Lbl_Netze.Text = netze + "";
+            }
+        }
+        private void TypeSubnet()
+        {
+            if (txt_ipin.Text == "") return;
+            byte cidr = Convert.ToByte(ipSplt[0]);
+            if (cidr <= 127)
+            {
+                //A
+                Lbl_NetClass.Text = "A";
+            }
+            else if (cidr <= 191)
+            {
+                //B
+                Lbl_NetClass.Text = "B";
+            }
+            else if (cidr <= 223)
+            {
+                //C
+                Lbl_NetClass.Text = "C";
+            }
+            else if (cidr <= 231)
+            {
+                //D
+                Lbl_NetClass.Text = "D";
+            }
+            else if (cidr >= 232)
+            {
+                //E
+                Lbl_NetClass.Text = "E";
+            }
+        }
         private void rB_CidrN_CheckedChanged(object sender, EventArgs e)
         {
             txt_subin.Text = "";
@@ -169,6 +213,11 @@ namespace SubnettingCalc
         }
 
         private void Frm_Calc_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rB_CidrY_CheckedChanged(object sender, EventArgs e)
         {
 
         }
