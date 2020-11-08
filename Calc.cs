@@ -15,8 +15,13 @@ namespace SubnettingCalc
 {
     public partial class Frm_Calc : Form
     {
+        // Subnet Mask in Binary saved as Array
+        // Gets set when Mask is changed
         string[] subBin = new string[4];
-        string[] ipSplt = new string[4];
+
+        // IP Address in Decimal saved as Array
+        // Gets set when IP is changed
+        byte[] ipSplt = new byte[4];
 
         public Frm_Calc()
         {
@@ -31,6 +36,8 @@ namespace SubnettingCalc
             string[] result;
             byte i = 0;
             string subdec = "";
+            
+            // Sets Num of Hosts and Subnets
             NumHostsNets();
 
             Array.Clear(subBin, 0, subBin.Length);
@@ -47,6 +54,7 @@ namespace SubnettingCalc
                 }
                 cidrnot = Convert.ToByte(subMsk);
 
+                // Convert Decimal Subnet Mask to Binary
                 for (byte j = 0; j <= 3; j++)
                 {
                     if (cidrnot >= 8)
@@ -105,11 +113,12 @@ namespace SubnettingCalc
             byte i = 0;
 
             Array.Clear(ipSplt, 0, ipSplt.Length);
-            ipSplt = ipAdr.Split(spltby);
+
+            ipSplt = Array.ConvertAll(ipAdr.Split(spltby), s => byte.Parse(s));
             TypeSubnet();
-            foreach (string x in ipSplt)
+            foreach (byte x in ipSplt)
             {
-                if (x == "" || Convert.ToInt32(x) > 255) return;
+                if (x == 0 || Convert.ToInt32(x) > 255) return;
                 ipBin[i] = ToBinary(x);
                 i++;
             }
@@ -122,6 +131,16 @@ namespace SubnettingCalc
         {
             string bin;
             bin = Convert.ToString(Convert.ToInt32(num), 2);
+            if (bin.Length < 8)
+            {
+                bin = string.Concat(Enumerable.Repeat("0", 8 - bin.Length)) + bin;
+            }
+            return bin;
+        }
+        private static string ToBinary(byte num)
+        {
+            string bin;
+            bin = Convert.ToString(num, 2);
             if (bin.Length < 8)
             {
                 bin = string.Concat(Enumerable.Repeat("0", 8 - bin.Length)) + bin;
