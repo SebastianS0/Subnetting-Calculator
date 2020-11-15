@@ -110,11 +110,13 @@ namespace SubnettingCalc
             string ipAdr = txt_ipin.Text;
             char[] spltby = new char[] { '.' };
             string[] ipBin = new string[4];
+            string[] ipSplt2;
             byte i = 0;
 
-            Array.Clear(ipSplt, 0, ipSplt.Length);
-
-            ipSplt = Array.ConvertAll(ipAdr.Split(spltby), s => byte.Parse(s));
+            //Array.Clear(ipSplt, 0, ipSplt.Length);
+            ipSplt2 = ipAdr.Split(spltby);
+            if (ipSplt2[ipSplt2.Length-1] == "") return;
+            ipSplt = Array.ConvertAll(ipSplt2, s => byte.Parse(s));
             TypeSubnet();
             foreach (byte x in ipSplt)
             {
@@ -224,21 +226,6 @@ namespace SubnettingCalc
             {
                 txt_subin.Width = 150;
             }
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Frm_Calc_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rB_CidrY_CheckedChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

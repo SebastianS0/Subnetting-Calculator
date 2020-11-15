@@ -49,6 +49,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.Lbl_Netze = new System.Windows.Forms.Label();
             this.Lbl_hosts = new System.Windows.Forms.Label();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txt_ipin
@@ -158,7 +160,6 @@
             this.rB_CidrY.TabIndex = 11;
             this.rB_CidrY.Text = "Ja";
             this.rB_CidrY.UseVisualStyleBackColor = true;
-            this.rB_CidrY.CheckedChanged += new System.EventHandler(this.rB_CidrY_CheckedChanged);
             // 
             // rB_CidrN
             // 
@@ -223,7 +224,6 @@
             this.label2.Size = new System.Drawing.Size(185, 25);
             this.label2.TabIndex = 18;
             this.label2.Text = "Anzahl an Netze";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -255,11 +255,31 @@
             this.Lbl_hosts.TabIndex = 21;
             this.Lbl_hosts.Text = "0";
             // 
+            // listView1
+            // 
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(651, 253);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(121, 97);
+            this.listView1.TabIndex = 22;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(674, 275);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.TabIndex = 23;
+            this.label4.Text = "label4";
+            // 
             // Frm_Calc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 421);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.listView1);
             this.Controls.Add(this.Lbl_hosts);
             this.Controls.Add(this.Lbl_Netze);
             this.Controls.Add(this.label3);
@@ -286,7 +306,6 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Subnetting Calculator";
-            this.Load += new System.EventHandler(this.Frm_Calc_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -314,6 +333,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label Lbl_Netze;
         private System.Windows.Forms.Label Lbl_hosts;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.Label label4;
     }
 }
 
